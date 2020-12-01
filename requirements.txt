@@ -1,5 +1,5 @@
-tensorflow==2.2.0
+tensorflow==2.3.0
 pillow==6.2.0
 numpy==1.12
-streamlit
+streamlit==0.62
 wget
