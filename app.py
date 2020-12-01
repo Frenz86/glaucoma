@@ -6,8 +6,6 @@ import requests
 import os
 from io import BytesIO
 
-st.set_option('deprecation.showfileUploaderEncoding', False)
-
 def import_and_predict(image_data, model):
     image = ImageOps.fit(image_data, (100,100),Image.ANTIALIAS)
     image = image.convert('RGB')
