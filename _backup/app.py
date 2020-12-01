@@ -3,7 +3,6 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 import requests
-import os
 from io import BytesIO
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
@@ -18,22 +17,11 @@ def import_and_predict(image_data, model):
     prediction = model.predict(img_reshape)
     return prediction
 
-import wget
-def download_data():
-    path1 = './my_model2.h5'
-    if not os.path.exists(path1):
-        url = 'https://frenzy86.s3.eu-west-2.amazonaws.com/python/models/my_model2.h5'
-        filename = wget.download(url)
-    else:
-        print("Model is here.")
-
-##### MAIN ####
 def main():
     ################ load logo from web #########################
     image = Image.open('the-biggest.jpg')
     st.title("AI APP to predict glaucoma through fundus image of eye")
     st.image(image, caption='',use_column_width=True)
-    download_data()
     model = tf.keras.models.load_model('my_model2.h5')
     file = st.file_uploader("Please upload an image(jpg) file", type=["jpg"])
     if file is None:
